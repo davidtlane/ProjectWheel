@@ -1,4 +1,6 @@
-var x123 = 456;
+
+
+
 startApp();
 
 function startApp() {
@@ -7,19 +9,12 @@ var app = angular.module('myApp', ['ui.bootstrap','myApp.projectAPI','myApp.util
 
 app.controller('app-ctrl', function($scope, $document, $modal, projectAPI, util) {
 
-	var projects = {};
-	var svgDiv = document.getElementById("svgDiv");
+	var projects = {},
+			dragState = false;
+
+	$scope.svgDiv = document.getElementById("svg-div");
 	$scope.tabList = document.getElementById("tab-list");
-
-	$scope.svgHeight = function(el) {
-		el.style.height = el.clientWidth+'px';
-	}
-
-	$scope.svgHeight(svgDiv);
-
-	var h = svgDiv.clientWidth*1.0 -70;
-	$scope.taskListEl = document.getElementById("task-list");
-	$scope.taskListEl.style.maxHeight = h+'px';
+	$scope.taskList = document.getElementById("task-list");
 
 	$scope.removeProjectModal = function () {
 		var modalInstance = $modal.open({
@@ -69,8 +64,6 @@ app.controller('app-ctrl', function($scope, $document, $modal, projectAPI, util)
 		return ( !localStorage.projects || localStorage.projects=="{}")
 	}
 
-	if (!$scope.noProjects()) initProjects();
-
 	$scope.noTasks = function () {
 		return ( $scope.cp && $scope.cp.numTasks()==0 )
 	}
@@ -111,16 +104,14 @@ app.controller('app-ctrl', function($scope, $document, $modal, projectAPI, util)
 		$scope.cp.curDateID = id;
 	};
 
-	var dragState = false;
-
 	$scope.changeCurTaskID = function (id) { $scope.cp.curTaskID = id; };
 
 	$scope.taskDown = function (ev,id) {
 		if (!dragState) {
 			ev.preventDefault();
-			svgPos = util.getPos(svgDiv);
+			svgPos = util.getPos($scope.svgDiv);
 			$scope.cp.curTaskID = id;
-			svgRad = svgDiv.clientWidth/2;
+			svgRad = $scope.svgDiv.clientWidth/2;
 			dragPos0 = [ev.pageX-svgRad-svgPos.x, ev.pageY-svgRad-svgPos.y];
 			moved = 0;
 			dragState = true;
@@ -203,6 +194,8 @@ app.controller('app-ctrl', function($scope, $document, $modal, projectAPI, util)
 			delete $scope.cp;
 		}
 	}
+
+	if (!$scope.noProjects()) initProjects();
 
 });
 

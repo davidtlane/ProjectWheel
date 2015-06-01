@@ -14,7 +14,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/output.css" />
 
 	<title>Project Wheel</title>
 
@@ -61,7 +61,7 @@
 <div class="row">
 	<div class="col-xs-6">
 		<div class="row">
-			<div my-nodes id="svgDiv" ng-mousemove="taskMove($event)" ng-mouseup="taskUp()">
+			<div my-nodes id="svg-div" ng-mousemove="taskMove($event)" ng-mouseup="taskUp()">
 				<svg id="svg" width="100%" height="100%">
 					<defs id="svgDefs">
 						<filter id="dateArcFilter">

@@ -87,15 +87,15 @@ angular.module('myApp')
 			scope.$watch("cp.curTaskID", highlightTask, true);
 			scope.$watch("cp.curDateID", highlightDate, true);
 
-      angular.element($window).on('resize', function(event) {
+      angular.element($window).on('load resize', function(event) {
 				handleSize(element[0]);
 				drawWheel();
       });
 
 			function handleSize (el) {
-        scope.svgHeight(el);
+        el.style.height = el.clientWidth+'px';
 				var h = el.clientWidth*1.0 -70;
-				scope.taskListEl.style.maxHeight = h+'px';
+				scope.taskList.style.maxHeight = h+'px';
 			}
 
 			function arrayEquiv (a,b) {

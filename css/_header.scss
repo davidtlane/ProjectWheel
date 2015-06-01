@@ -1,0 +1,77 @@
+
+#header {
+	height:40px;
+	width:100%;
+	background-color:rgba(255,255,255,0.2);
+	position: relative;
+	margin-top:5px;
+}
+
+#tab-list {
+	margin:0;
+	padding:0;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	list-style-type: none;
+	height:100%;
+}
+
+#wrapper {
+	position:relative;
+	margin:0;
+	top:1px;
+	overflow:hidden;
+	padding:0;
+	height:100%;
+	z-index: 40;
+}
+
+.tab {
+	background-color: $my-grey-lite;
+	font-size: 1.1em;
+	float: left;
+	display: inline;
+	height: 100%;
+	padding: 10px;
+	margin-left:5px;
+	z-index: 50;
+	cursor:pointer;
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid black;
+	color:grey;
+}
+
+.active {
+	background-color: $my-beige;
+	border-bottom: 1px solid $my-beige;
+	z-index: 100;
+	color:black;
+}
+
+#btn-list {
+	position: absolute;
+	right: 5px;
+	top: 0px;
+	padding:0;
+	z-index:50;
+}
+
+#btn-list li {
+	position: relative;
+	float: left;
+	list-style-type: none;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#btn-list li.scroller {
+	font-size: 1.1em;
+	height: 100%;
+	padding: 10px;
+	margin: 0;
+	color: rgba(0,0,0,0.1);
+}
+
+
+
